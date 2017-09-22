@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>键盘事件</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				text-decoration: none;
+				list-style: none;
+			}
+			::-webkit-input-placeholder{
+				color: #FF0000;
+				font-size: 20px;
+				line-height: 150px;
+				text-align: center;
+			}
+			:root{
+				background: #FBF5F0;
+			}
+			main{
+				width: 1200px;
+				margin: 50px auto;
+			}
+			.area{
+				width: 60%;
+				height: auto;
+				float: left;
+				padding: 0 50px;
+				box-sizing: border-box;
+			}
+			.area h1{
+				margin-bottom: 20px;
+				text-align: center;
+			}
+			.input1 input{
+				width: 100%;
+				height: 50px;
+				border: none;
+				border-radius:20px;
+				padding: 10px 20px;
+				box-sizing: border-box;
+				margin-bottom: 20px;
+			}
+			.area1 input{
+				width: 100%;
+				height: 40px;
+				border: none;
+				border-radius:20px;
+				box-sizing: border-box;
+				background: #FF781E;
+				font-size: 26px;
+				text-align: center;
+				line-height: 40px;
+			}
+			.wenzi{
+				width: 100%;
+				height: 30px;
+				font-size: 20px;
+				line-height: 40px;
+				box-sizing: border-box;
+				padding: 0 10px;
+				color: #000000;
+				margin-bottom: 10px;
+			}
+			.wenzi span{
+				color: #FF0000;
+			}
+			textarea{
+				resize: none;
+				margin: 0 auto;
+				border-radius: 20px;
+				padding: 20px 20px;
+				border: none;
+				width: 100%;
+				height: 200px;
+				box-sizing: border-box;
+				margin-bottom: 10px;
+			}
+			.text{
+				width: 40%;
+				height: auto;
+				float: left;
+				overflow: hidden;
+				padding-top: 50px;
+			}
+			.text li{
+				width: 100%;
+				height: auto;
+				padding: 10px;
+				border-bottom: 1px solid #FF0000;
+				box-sizing: border-box;
+			}
+			.text img{
+				width: 50px;
+				height: 50px;
+				position: absolute;
+				z-index: 111;
+				border-radius: 50%;
+			}
+			.text .item{
+				width: 100%;
+				height: auto;
+				position: relative;
+				margin-left: 50px;
+				padding: 0 10px;
+			}
+		</style>
+		<script src="HTMLElement.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<main>
+			<div class="area">
+				<h1>留言板</h1>
+				<div class="input1">
+					<input type="text" placeholder="姓名" />
+				</div>
+				<div class="area1">					
+					<textarea  maxlength="120" placeholder="说点儿什么吧！"></textarea>
+					<div class="wenzi">还可以输入<span id="mn">120</span>字</div>
+				</div>
+				<div class="area1">					
+				<input type="submit"/>
+				</div>
+			</div>
+			<div class="text">
+				<ul>
+					
+				</ul>
+			</div>
+		</main>
+	</body>
+</html>
+<script type="text/javascript">
+	window.onload = function () {
+	
+	let areas = document.querySelector('textarea');
+	//获取文字的属性
+	let ss = document.querySelector('span');
+	//获取最大可以输入的字数
+	let max = areas.maxLength;
+	let texts = document.querySelector('.text');
+	let lss = document.querySelectorAll('.text>li');
+	
+	let input = document.querySelector('.area1>input');
+	areas.onkeyup = function(e,value){
+		//获取输入的字数
+		let mm = this.value;
+		//获取剩余字数
+		ss.innerText = `${max-mm.length}`;
+
+	}
+	//把键盘抬起事件和点击事件合起来写
+	areas.onkeydown = input.onclick = function(e){
+		//e.type判断事件类型
+		if (e.type=='click') {
+			//冒充
+			fn.call(areas)
+			
+		} else if (e.type=='keydown'){
+			
+			if (e.shiftKey && e.keyCode==13) {
+				fn.call(areas)
+			}
+		}
+	}
+	//	
+	function fn () {
+		let lis = document.createElement('li');
+			//保存数据
+			let val = this.value;
+//			let inp = inpus.value;
+			//清空数据
+			this.value='';
+//			inpus.value='';
+			
+			lis.innerHTML = `
+					<img src="flower tea9.jpg"/>
+					<div class="item">
+						<h3>xxx</h3>
+						<p> ${val}</p>
+					</div>
+			`;
+			//添加到texts
+			lis.appendTo(texts);
+		lis.onmouseenter = function(){
+			lis.style.background = '#fff';
+		}
+		lis.onmouseleave = function(){
+			lis.style.background = '#fbf5f0';
+		}
+		
+	}
+	
+}
+</script>
+	
+	
+	<!--document.onkeydown = function(e) {
+		console.log(e.keyCode)//返回当前按的键的键盘码，不区分大小写
+		//回车-13，shift-16，Ctrl-17，alt-18，空格-32
+		//左-37，上-38，右-39，下-40
+		//用e.keyCode判断某一个特定的键是否被按下
+		//e.shiftKey用来判断单钱按下的键是否是shift键	等于e.keyCode==16	
+	}
+	
+	//剩余字数 = 总数    -  输 入		
+	//        100     str.length
+	//1.获取内容 	value  /  innerText
+	//2.>100 	maxlength
+	//3.提交 	shift+enter		1.文本域保存	清空		2.插入	
+	//ele.document.createElement()
+	//ele.innerText = 
+	
+	
+	//把键盘抬起事件和点击事件分开写
+	areas.onkeydown = function(e){
+		if(e.shiftKey && e.keyCode==13){
+			//创建新的节点
+			let lis = document.createElement('li');
+			//保存数据
+			let val = areas.value;
+			let inp = inpus.value;
+			//清空数据			areas.value='';
+			inpus.value='';
+			
+//			lis.innerHTML = `
+//					<img src="flower tea9.jpg"/>
+//					<div class="item">
+//						<h3>程</h3>
+//						<p> ${val}</p>
+//					</div>
+//			`;
+//			//添加到texts
+//			lis.appendTo(texts);
+//			lis.onmouseenter = function(){
+//			lis.style.background = '#fff';
+//		}
+//		lis.onmouseleave = function(){
+//			lis.style.background = '#fbf5f0';
+//		}
+//		
+//		console.log(lis)
+//		}
+//	}
+//	input.onclick = function(){
+//		let lis = document.createElement('li');
+//			//保存数据
+////			let inp = inpus.value;
+//			let val = areas.value;
+//			//清空数据
+//			areas.value='';
+////			inpus.value='';
+//			
+//			lis.innerHTML = `
+//					<img src="flower tea9.jpg"/>
+//					<div class="item">
+//						<h3>彭</h3>
+//						<p> ${val}</p>
+//					</div>
+//			`;
+//			//添加到texts
+//			lis.appendTo(texts);
+//			
+//		lis.onmouseenter = function(){
+//			lis.style.background = '#fff';
+//		}
+//		lis.onmouseleave = function(){
+//			lis.style.background = '#fbf5f0';
+//		}
+//		
+//		console.log(lis)
+//	}
+	-->

@@ -1,0 +1,159 @@
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+	font-family: 'Comic Sans MS';
+}
+main{
+	max-width: 1200px;
+	margin: 0 auto;
+}
+.root{
+	background-color: #efefef;
+}
+header{
+	width: 100%;
+	height: 75px;
+	background-color: #fff;
+	position:fixed;
+	z-index: 100;
+}
+.head-left{
+	max-width: 15%;
+	height: 75px;
+	float: left;
+	/*background-color: plum;*/
+}
+.head-left img{
+	display: block;
+	width: 50px;
+	height: 50px;
+	margin: 0 auto;
+	margin-top: 12px;
+}
+.head-right{
+	max-width: 85%;
+	height: 72px;
+	float: right;
+	/*background-color: palegoldenrod;*/
+}
+.head-right ul li{
+	float: left;
+}
+.head-right ul li a{
+	float: left;
+	height: 59px;
+	padding-left: 20px;
+	padding-right: 20px;
+	text-align: center;
+	line-height: 24px;
+	padding-top: 13px;
+	font-size: 18px;
+	color: #2E2831;
+}
+.head-right ul li a span{
+	font-size: 11px;
+	color: #2E2831;
+}
+.head-right ul li a:hover{
+	color: #fff;
+	background-color: #2E2831;
+}
+.head-right ul li:nth-child(5){
+	border-bottom: 3px solid #2E2831;
+}
+.head-right ul li a:hover span{
+	color: #fff;
+}
+.head{
+	width: 100%;
+	height: 75px;
+	background-color: #2e2831;
+}
+.banner{
+	width: 100%;
+	height: 557px;
+	background-color: white;
+	/*overflow: hidden;*/
+	background:url(../img/banner/tee-1680885_1920.jpg) no-repeat center/cover;
+}
+.eff{
+	width: 100%;
+	height: auto;
+	margin-top: 100px;
+}
+.eff ul li{
+	width: 1160px;
+	height: 360px;
+	margin-bottom:50px;
+	padding: 20px 20px;
+	border: 1px solid #efefef;
+}
+.eff ul li:hover{
+	box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.2);
+}
+.date{
+	width: 500px;
+	height: 360px;
+	float: left;
+}
+.date img{
+	width: 500px;
+	height: 360px;
+}
+.date2{
+	float: left;
+	width: 600px;
+	height: auto;
+	padding: 30px;
+}
+.date2 span{
+	float:right;
+	height: 30px;
+	font-size: 20px;
+	line-height: 30px;
+	text-align: center;
+	margin-left: 15px;
+	margin-top: 80px;
+}
+.date2 a{
+	color: #2E2831;
+}
+.date2 h2{
+	margin-bottom: 20px;
+	line-height: 60px;
+	text-align: center;
+}
+.date2 p{
+	font-size: 16px;
+	color: #2E2831;
+	line-height: 30px;
+	text-indent: 2em;
+}
+
+.base{
+	width: 100%;
+	height: 100px;
+	background: #2E2831;
+}
+.base1{
+	height: 50px;
+	font-size: 20px;
+	line-height: 50px;
+	text-align: center;
+	color: #fff;
+}
+.base ul{
+	width: 500px;
+	height: 50px;
+	padding: 0 350px;
+}
+.base ul li a{
+	float: left;
+	width: 80px;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	color: #fff;
+}

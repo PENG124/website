@@ -1,0 +1,74 @@
+
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>画板</title>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="font/iconfont.css"/>
+		<!--<script src="js/palette.js" type="text/javascript" charset="utf-8"></script>-->
+		<!--<script src="js/index.js" type="text/javascript" charset="utf-8"></script>-->
+		<script src="js/draw.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/gets.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<main>
+			<div class="left">
+				<ul>
+					<li class="line gets" id="line" active="true"><span class="iconfont icon-zhixian"></span></li>
+					<li class="dashed gets" id="dashed"><span class="iconfont icon-xuxian"></span></li>
+					<li class="brush gets" id="brush"><span class="iconfont icon-tubiao"></span></li>
+					<li class="ract gets" id="ract"><span class="iconfont icon-juxing"></span></li>
+					<li class="poly gets" id="poly"><span class="iconfont icon-duobianxing">
+						<div class="polys">
+							<div class="pos">三边形</div>
+							<div class="pos">四边形</div>
+							<div class="pos">五边形</div>
+							<div class="pos">六边形</div>
+							<div class="pos">七边形</div>
+						</div>
+					</span></li>
+					<li class="star gets" id="star"><span class="iconfont icon-wujiaoxing"></span></li>
+					<li class="circle gets" id="circle"><span class="iconfont icon-yuan"></span></li>
+					<li class="polygon gets" id="polygon"><span class="iconfont icon-duojiaoxing">
+						<div class="jiaos">
+							<div class="jis">三角形</div>
+							<div class="jis">四角形</div>
+							<div class="jis">五角形</div>
+							<div class="jis">六角形</div>
+							<div class="jis">七角形</div>
+						</div>
+					</span></li>
+					<hr  width="100%" size="4" color="#0078E6"/>
+					<li class="style gets" id="fill"><span class="iconfont icon-tianchong"></span></li>
+					<li><input type="color"/></li>
+					<li class="style gets" id="stroke"><span class="iconfont icon-miaobian"></span></li>
+					<li><input type="color"/></li>
+					<hr  width="100%" size="4" color="#0078E6"/>
+					<li class="eraser gets" id="eraser"><span class="iconfont icon-eraser"></span></li>
+					<li class="clear gets" id="clear"><span class="iconfont icon-qingkong"></span></li>
+					<li class="gets font" id="font"><span class="iconfont icon-wenziICON"></span></li>
+					<li class="gets crop"><span class="iconfont icon-crop"></span></li>
+					<li class="reverse gets">反向</li>
+				</ul>
+			</div>
+			<div class="right">
+				
+				<div class="top">
+					<ul>
+						<li class="gets"><span class="iconfont icon-xinjian"></span></li>
+						<a href="" class="iconfont icon-baocun"></a>
+						<li class="back gets" id="back"><span class="iconfont icon-fanhui"></span></li>
+					</ul>
+				</div>
+				<div class="bottom">
+					<canvas width="1010" height="500">你的浏览器版本不支持canvas，请更换浏览器！</canvas>
+					
+				</div>
+					<div class="clip"></div>
+			</div>
+		</main>
+	</body>
+</html>
+<script type="text/javascript">
+	
+</script>

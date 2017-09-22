@@ -1,0 +1,186 @@
+let
+var识别函数，let识别大括号里面的
+1、    alert(a);	//报错,不存在变量的提升，声明之前不可以调用
+		let a = 10;
+		alert(a);
+2、let a =10;
+			//TDZ temporal dead zone暂时性的死区
+			if (true) {
+				alert(a);//暂时性的死区
+				let a 20;
+			}
+			alert(a);
+3、let x=x;
+		alert(x);
+隐世的暂时性的死区
+在同一个作用域里面不允许声明同一个变量
+快捷作用域可以嵌套快捷作用域，只对let有效，不会对var起作用
+const
+声明出来必须给赋值,	const  a= 22;	常量有作用域，区分大小写
+常量声明在程序最前面，默认用大写
+内置顶层函数
+			      let str ='张三';
+			let result= escape(str);	//编码
+			console.log(result);
+			console.log(unescape('%u5F20%u4E09'));	//解码
+			
+		强制类型转换
+			document.write(Number(10.5)+'<br>');//转换数字仍然是它本身
+			document.write(Number(10.0000)+'<br>');//转换数字仍然是它本身，小数点后面的0忽略
+			document.write(Number(010)+'<br>');//转换数字  0打头的为八进制，现在八进制用0o
+			document.write(Number(false)+'<br>');//转换布尔值 	false为0 true为1
+			document.write(Number(null)+'<br>');//转换null为0
+			document.write(Number(undefined)+'<br>');//转换undefined为NaN
+			document.write(Number('1234')+'<br>');//转换数字型的字符串为数字
+			document.write(Number('01234')+'<br>');
+//转换数字型的字符串为数字，前面有0忽略了,字符串里面不识别进制
+			document.write(Number('01234.0111000')+'<br>');
+//转换数字型的字符串为数字，前面有0忽略了，后面无意义的0就忽略了
+			document.write(Number('1234a')+'<br>');//转换不成数字，输出NaN
+			document.write(Number('-1000')+'<br>');//转换数字，只识别数字型字符串
+			document.write(Number('true')+'<br>');//转换不成数字，输出NaN
+			document.write(String(true)+'<br>');//任意变量转字符串都可以转换，只相当于加了一个引号
+			document.write(Boolean(0)+'<br>');//
+			document.write(Boolean("")+'<br>');//
+			document.write(Boolean(false)+'<br>');//
+			document.write(Boolean(undefined)+'<br>');//
+			document.write(Boolean(null)+'<br>');//
+			document.write(Boolean(NaN)+'<br>');//数字0，空字符串，undefined，null，false，NaN为假
+			document.write(Boolean([])+'<br>');//空数组为true
+			document.write(Boolean(" ")+'<br>');//字符串里面有一个空格为true
+			document.write(Boolean(function(){})+'<br>');//空函数为true
+			document.write(isNaN(true)+'<br>');
+//isNaN（其他类型）不能转化成一个数字吗？	能-false		不能-true		输出false
+			document.write(isNaN("")+'<br>');
+//isNaN（其他类型）不能转化成一个数字吗？	能-false		不能-true		输出false
+			document.write(parseInt("12345")+'<br>');
+//parseInt(把字符串转化成数字)不能转化成一个数字吗？	输出12345
+			document.write(parseInt("12345.11")+'<br>');
+//parseInt(把字符串转化成数字)不能转化成一个数字吗？	输出12345,不识别小数点后面的
+			document.write(parseInt("012345")+'<br>');
+//parseInt(把字符串转化成数字)不能转化成一个数字吗？	输出12345,不识别前面的0
+			document.write(parseInt("123px")+'<br>');
+//parseInt(把字符串转化成数字)不能转化成一个数字吗？	输出123,不识别字母只识别数字
+			document.write(parseInt("123px456")+'<br>');														//parseInt(把字符串转化成数字)不能转化成一个数字吗？	输出123,不识别字母只识别数字，从开头开始，一直找到第一个非数字字符结束
+			document.write(parseInt("abc123px456")+'<br>');										//parseInt(把字符串转化成数字)不能转化成一个数字吗？	输出NaN,不识别字母
+			document.write(parseInt("   123px456")+'<br>');										//parseInt(把字符串转化成数字)不能转化成一个数字吗？	输出123,忽略掉空格
+			document.write(parseInt("-123px456")+'<br>');										//parseInt(把字符串转化成数字)不能转化成一个数字吗？	输出-123,
+//parseInt(把字符串转化成数字)不能转化成一个数字吗？	以数字，空格，正负才可以转
+			document.write(parseFloat("123.45")+'<br>');
+//parseFloat(把字符串转化成数字)不能转化成一个数字吗？	 输出123.45
+			document.write(parseFloat("123.45ab")+'<br>');
+//parseFloat(把字符串转化成数字)不能转化成一个数字吗？ 输出123.45
+			document.write(parseFloat("ab123.45")+'<br>');
+//parseFloat(把字符串转化成数字)不能转化成一个数字吗？ 输出NaN
+			document.write(parseFloat("123.45.67")+'<br>');
+//parseFloat(把字符串转化成数字)不能转化成一个数字吗？ 输出123.45只识别前面的点，后面的忽略，因为不是严格的浮点型字符串
+			
+对 象
+JavaScript 中的所有事物都是对象：字符串、数值、数组、函数...此外，JavaScript 允许自定义对象。
+对象只是带有属性和方法的特殊数据类型。
+创建对象的方法
+1、{};//创建对象最简单的方式		json格式
+			let abj = {};
+2、function phone () {
+		}
+	  let apple = new phone();
+	   alert(typeof apple);
+3、let sx = new Object();
+	alert(typeof sx);
+4、class person{
+	}
+	let zhangsan = new person();
+	alert(typeof person);
+属性和方法
+  ● 访问对象属性的语句，属性是与对象相关的值。
+      ○ let zhangsan = {
+	'height':180,
+	'sex':'nan',
+	'age':20
+}
+alert(zhangsan.age);
+alert(zhangsan['age']);//两种访问方式
+  ● 访问对象方法的语句，方法是能够在对象上执行的动作。
+      ○ let zhangsan = {
+		'height':180,
+		'sex':'nan',
+		'age':20,
+		'name':'zhangsan',
+		'eat':function () {
+			alert('eat');
+		}
+	}
+	zhangsan.eat();
+练习：1、function student () {
+				this.classes = 'WUIW1703';
+				this.names = 'zhangsan';
+				this.skills = 'html,css,js';
+				this.study = function(){
+					alert(this.names+this.classes);
+				}
+				this.say = function(str){
+					alert(str);
+				}
+			}
+			let zhangsan = new student('zhangsan');
+			let lisi = new student('lisi');
+			let ww = new student('wanwu');
+			zhangsan.say('张三说话');
+			lisi.say('李四说话');
+2、this里面可以是this[0]
+3、对象的属性可以是下标，模拟一个数组
+function myArr(...rest) {
+				for (let i=0;i<rest.length;i++) {
+					this[i]= rest[i];
+				}
+				this.length = rest.length;
+			}
+		var arr = new myArr(1,2,3,4);
+var arr1 = new myArr('a','b','c');
+		alert(arr1.length)
+4、实现当前数组是否存在大于0或者小于0 的数
+function myArr(...rest) {
+				for (let i=0;i<rest.length;i++) {
+					this[i]= rest[i]
+				}
+				this.length = rest.length;
+				this.some = function  () {
+					for (let i=0;i<this.length;i++) {
+						if (this[i]<0) {
+							return true;
+						}
+					}
+					return false;
+				}
+			}
+			var arr = new myArr(1,2,3,4);
+			alert(arr.some());
+
+5、				function myArr () {
+				for (let i = 0;i<arguments.length;i++) {
+					this[i]=arguments[i];
+				}
+				this.length = arguments.length;
+				this.push = function(...rest){
+					for (let i= 0;i<rest.length;i++) {
+						this[this.length]=rest[i];
+						this.length++;//加一个元素进来，就要把它的长度加一
+					}//push 用来实现对数据的添加
+					return this.length;
+				}
+				this.filter = function () {
+					let newarr = new myArr();
+					for (let i=0;i<this.length;i++) {
+						if (this[i]>0) {
+							newarr.push(this[i]);//调用push方法
+						}
+					}
+					return newarr;
+				}
+			}
+			let arr = new myArr(1,2,3,4,56,6);
+			console.dir(arr);
+			arr.push('a','b','c');//undefined
+			console.log(arr.length);
+			console.log(arr.filter());
+
